@@ -90,11 +90,8 @@ middleware_config = {
     "burst_limit": 20,
     "time_window": 60,
     "log_level": "INFO",
-    "cors_origins": ["*"],  # Configure appropriately for production
-    "valid_api_keys": [
-        "bymb_dev_test_key_001",  # Development test key
-        "bymb_staging_key_002"    # Staging test key
-    ]
+    "cors_origins": ["http://localhost:3000", "http://127.0.0.1:3000"],  # Development CORS
+    "valid_api_keys": []  # API keys now loaded from environment variables
 }
 
 setup_middleware(app, middleware_config)

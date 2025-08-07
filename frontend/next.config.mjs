@@ -1,11 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: '',
   images: {
     unoptimized: true,
   },
-  assetPrefix: '',
   // Keep backend connection configuration for development
   async rewrites() {
     return [
@@ -15,19 +12,10 @@ const nextConfig = {
       },
     ]
   },
-  serverRuntimeConfig: {
-    backendHost: process.env.NEXT_PUBLIC_BACKEND_HOST || 'localhost',
-    backendPort: process.env.NEXT_PUBLIC_BACKEND_PORT || '8000',
-  },
-  publicRuntimeConfig: {
-    backendHost: process.env.NEXT_PUBLIC_BACKEND_HOST || 'localhost',
-    backendPort: process.env.NEXT_PUBLIC_BACKEND_PORT || '8000',
+  env: {
+    NEXT_PUBLIC_BACKEND_HOST: process.env.NEXT_PUBLIC_BACKEND_HOST || 'localhost',
+    NEXT_PUBLIC_BACKEND_PORT: process.env.NEXT_PUBLIC_BACKEND_PORT || '8000',
   },
 };
-
-// Handle rewrites differently for static export
-if (process.env.NODE_ENV === 'production') {
-  delete nextConfig.rewrites;
-}
 
 export default nextConfig;

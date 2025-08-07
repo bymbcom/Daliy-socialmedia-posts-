@@ -104,6 +104,14 @@ class Settings(BaseSettings):
     compliance_monitoring_enabled: bool = Field(
         default=True, description="Enable real-time compliance monitoring"
     )
+    
+    # Webhook settings
+    webhook_secret_key: str = Field(
+        default="", description="Secret key for webhook signature verification"
+    )
+    webhook_enabled: bool = Field(
+        default=False, description="Enable webhook functionality"
+    )
 
     model_config = SettingsConfigDict(
         env_file=".env.development", env_file_encoding="utf-8", case_sensitive=False
